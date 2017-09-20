@@ -1,6 +1,9 @@
-#Gemfile
 source "https://rubygems.org"
 
-gem "sinatra"
+ruby "2.4.0"
+
+gem "minitest"
+gem "sinatra", "~>1.4.7"
 gem "sinatra-contrib"
 gem "erubis"
+gem "redcarpet"
