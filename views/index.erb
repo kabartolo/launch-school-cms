@@ -1,13 +1,28 @@
-<% if session[:message] %>
-  <p><%= session.delete(:message) %></p>
-<% end %>
-
 <ul>
   <% @directory.each do |file_name| %>
     <li>
-      <a href="/<%= file_name %>"><%= file_name %></a>
-      <a href="/<%= file_name %>/edit">Edit</a>
+      <div>
+        <a href="/<%= file_name %>"><%= file_name %></a>
+        <a href="/<%= file_name %>/edit">Edit</a>
+        <form class="inline" method="post" action="/<%= file_name %>/delete">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
     </li>
   <% end %>
 </ul>
 
+<a href="/new">New Document</a>
+
+<% if session[:username] %>
+  <form method="post" action="/users/sign_out">
+    <p class="user-status">
+      Signed in as <%= session[:username] %>.
+      <button type="submit">Sign Out</button>
+    </p>
+  </form>
+<% else %>
+  <form method="get" action="/users/sign_in">
+    <button type="submit">Sign In</button>
+  </form>
+<% end %>
